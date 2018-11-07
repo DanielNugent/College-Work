@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <stdbool.h>
+
 #include "bloom.h"
 
 const int BLOOM_HASH1 = 17;
