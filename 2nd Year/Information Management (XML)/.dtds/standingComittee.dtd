@@ -1,0 +1,19 @@
+<! DOCTYPE standingCommittee [
+
+<!ELEMENT standingCommittee (headmembers,regionmembers,president,vicepresident,immediatepastpresidenr,honorarytreasurer,honorarynationalorganiser,region>
+
+<!-- Fields hold names of all the headmembers of the standing commitee, 4 head members in total. -->
+<!ELEMENT headmembers(president,vicepresident,immediatepastpresidenr,honorarytreasurer,honorarynationalorganiser)>
+<!ATTLIST headmembers amount CDATA #IMPLIED>
+<!ELEMENT president (#PCDATA)>
+<!ELEMENT vicepresident (#PCDATA>
+<!ELEMENT immediatepastpresident (#PCDATA)>
+<!ELEMENT honorarytreasurer (#PCDATA)>
+<!ELEMENT honorarynationalorganiser (#PCDATA)>
+
+<!-- Hold info about elected region members -->
+<!ELEMENT regionmembers(region)
+<!ATTLIST regionmembers termofoffice CDATA #IMPLIED>
+<!ELEMENT region #PCDATA>
+<!ATTLIST region id (#PCDATA)
+]>

@@ -1,0 +1,30 @@
+<! DOCTYPE members [
+	
+<!ELEMENT members (member*)>
+<!ELEMENT member (name, email,address,nationality,dateOfBirth,registeredWithSchool,dateOfMembership)>
+<!ATTLIST member idNumber CDATA #REQUIRED>
+
+<!-- '+' Cardinality is used to show that each member will have
+		at least one first name and at least one last name. --> 
+<!ELEMENT name (firstname+, lastname+)>
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+
+<!--These elements are simple fields that will hold information
+  		about the member. -->
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ATTLIST address isPrivate CDATA #IMPLIED 'n'>
+<!ELEMENT nationality (#PCDATA)>
+<!ELEMENT dateOfBirth (day,month,year)>
+<!ELEMENT day (#PCDATA)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+
+<!-- The member will be registered with a school.-->
+<!ELEMENT registeredWithSchool (#PCDATA)>
+<!ELEMENT dateOfMembership (day,month,year)>
+<!ELEMENT day (#PCDATA)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+]>

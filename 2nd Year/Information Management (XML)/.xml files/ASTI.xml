@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ASTI SYSTEM "ASTI.dtd">
+<ASTI>
+<headOffice>
+  <president>Breda Lynch</president>
+  <generalSecretary>Kieran Christie</generalSecretary>
+  <executiveOfficer>Jacqueline Kearns</executiveOfficer>
+  <executiveOfficer>Gemma Tuffy</executiveOfficer>
+  <executiveOfficer>Maire Collins</executiveOfficer>
+  <treasurer>Raymond St. John</treasurer>
+</headOffice>
+<members>
+   <member idNumber ='737562'>
+      <name>
+        <firstname>Ray</firstname>
+        <lastname>Smith</lastname>
+      </name>
+      <address isPrivate = 'y'>14 Branberry Road, Dublin</address>
+      <nationality>Irish</nationality>
+      <dateOfBirth>
+        <day>09</day>
+        <month>06</month>
+        <year>1984</year>
+      </dateOfBirth>
+      <email>johnsmith@gmail.com</email>
+      <registeredWithSchool>St. Kildas NS</registeredWithSchool>
+      <dateOfMembership>
+        <day>09</day>
+        <month>09</month>
+        <year>2008</year>
+      </dateOfMembership>
+    </member>
+      <member idNumber='500423'>
+		  <name>
+			  <firstname>John</firstname>
+			  <lastname>Doe</lastname>
+  		</name>
+	  	<email>johnDoe22@gmail.com</email>
+		  <address isPrivate='n'>10 cloverfield lane, nebraska, toronto</address>
+		  <nationality> finnish </nationality>
+		  <dateOfBirth>
+         <day>12</day>
+         <month>12</month>
+         <year>1998</year>
+      </dateOfBirth>
+		  <registeredWithSchool>St.Billys secondary</registeredWithSchool>
+      <dateOfMembership>
+         <day>12</day>
+         <month>12</month>
+         <year>1998</year>
+      </dateOfMembership>
+	  </member>
+  </members>
+    <regions>
+      <region>
+        <location>Dublin</location>
+        <branches>
+          <branchLocation>Dublin South Central</branchLocation>
+          <branchLocation>Dublin Stillorgan</branchLocation>
+          <branchLocation>Dublin North 1</branchLocation>
+          <branchLocation>Dublin North Central</branchLocation>
+          <branchLocation>Dublin North East</branchLocation>
+          <branchLocation>Dublin North West</branchLocation>
+          <branchLocation>Dublin South 1</branchLocation>
+          <branchLocation>Dublin South 2</branchLocation>
+          <branchLocation>Dublin South County</branchLocation>
+          <branchLocation>Dublin South West</branchLocation>
+        </branches>
+      </region>
+      <region>
+        <location>Munster</location>
+        <branches>
+          <branchLocation>Clare</branchLocation>
+          <branchLocation>Limerick South</branchLocation>
+          <branchLocation>Limerick North</branchLocation>
+          <branchLocation>Nenagh</branchLocation>
+          <branchLocation>Desmond</branchLocation>
+          <branchLocation>Kerry</branchLocation>
+          <branchLocation>West Limerick</branchLocation>
+          <branchLocation>Cork North</branchLocation>
+          <branchLocation>Cork South</branchLocation>
+          <branchLocation>Waterford</branchLocation>
+        </branches>
+      </region>
+    </regions>
+   <committees>
+     <committee>
+       <committeeName>Standing Committee</committeeName>
+     </committee>
+     <committee>
+       <committeeName>Steering Committee</committeeName>
+     </committee>
+     <committee>
+       <committeeName>Central Executive Council</committeeName>
+     </committee>
+   </committees>
+</ASTI>

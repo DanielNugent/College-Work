@@ -1,0 +1,15 @@
+<!DOCTYPE branches [
+  <!ELEMENT branches (branch*)>
+  <!ELEMENT branch (location, member*, branchSecretary, BranchOfficer+)>
+  
+  <!-- The geographical location/name of a branch -->
+  <!ELEMENT location (#PCDATA)>
+  
+  <!-- Members part of this branch -->
+  <!ELEMENT member (name, email,address,nationality,dateOfBirth,registeredWithSchool,dateOfMembership)>
+  <!ATTLIST member idNumber CDATA #REQUIRED>
+  
+  <!-- this branch's branch secretary -->
+  <!ELEMENT branchSecretary(name, email, employedBy)>
+  <!ELEMENT branchOfficer(name, email, employedBy)>
+]>

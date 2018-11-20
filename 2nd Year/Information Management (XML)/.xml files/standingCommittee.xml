@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE standingCommittee SYSTEM "standingCommittee.dtd">
+<standingCommittee>
+    <headmembers amount='4'>
+        <president>Breda Lynch</president>
+        <vicepresident>Deirdre Mac Donald</vicepresident>
+        <immediatepastpresident>Ger Curtin</immediatepastpresident>
+        <honorarytreasurer>Ray St. John</honorarytreasurer>
+        <honorarynationalorganiser>Mary Ohle</honorarynationalorganiser>
+    </headmembers>
+    <regionmembers termofoffice='2'>
+        <region id='1'>Sean Carr</region>
+        <region id='2'>James Duffy</region>
+        <region id='3'>Noelle Moran</region>
+        <region id='4'>Geraldine O'Brien</region>
+        <region id='5'>Mathew O'Conor</region>
+        <region id='6'>Ann Piggot</region>
+        <region id='7'>Michael McGrath</region>
+        <region id='9'>Siobhan Peters</region>
+        <region id='10'>Eamon Dennehy</region>
+        <region id='11'>Brian Burke</region>
+        <region id='12'>Vacant</region>
+        <region id='13'>Vacant</region>
+        <region id='14'>Declan McInerney</region>
+        <region id='15'>Andrew Phelan</region>
+        <region id='16'>Miriam Duggan</region>
+        <region id='17'>Miriam Duggan</region>
+        <region id='18'>Philip Irwin</region>
+        <maxamountofterms>3</maxamountofterms>
+    </regionmembers>
+</standingCommittee>

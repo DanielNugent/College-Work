@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE issues SYSTEM "issues.dtd">
+<issues>
+  <issue id='1234'>
+    <topic>Holidays</topic>
+    <member id = '732442'></member>
+    <date>
+      <day>7</day>
+      <month>September</month>
+      <year>2017</year>
+    </date>
+    <information>Annual leave not honoured</information>
+    <status>resolved</status>
+  </issue>
+  <issue id = '1235'>
+    <topic>Job Security</topic>
+    <member id = '500423'></member>
+    <date>
+      <day>03</day>
+      <month>10</month>
+      <year>2018</year>
+    </date>
+    <information>Threatened with firing on multiple occasions</information>
+    <status>unresolved</status>
+  </issue>
+
+</issues>

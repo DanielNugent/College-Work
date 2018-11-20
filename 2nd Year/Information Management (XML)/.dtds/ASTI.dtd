@@ -1,0 +1,22 @@
+<!DOCTYPE ASTI [
+  <!-- all members of ASTI-->
+  <!ELEMENT members (member*)>
+  
+  <!--  the geographical regions ASTI is comprised of-->
+  <!ELEMENT regions (region+)>
+  <!ELEMENT region(location, branches)>
+  
+  <!-- The branch locations within the regions-->
+  <!ELEMENT branches(branchLocation)>
+  
+  <!-- the members of ASTI head office -->
+  <!ELEMENT headOffice (president, generalSecretary, executiveOfficer+, treasurer)>
+  <!ELEMENT president (#PCDATA)>
+  <!ELEMENT generalSecretary (#PCDATA)>
+  <!ELEMENT executiveOfficer (#PCDATA)>
+  <!ELEMENT treasurer (#PCDATA)>
+  
+  <!-- The committees witihn ASTI -->
+  <!ELEMENT committees (committee*)>
+  <!ELEMENT committee(committeeName)>
+]>

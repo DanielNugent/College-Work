@@ -1,0 +1,29 @@
+<!DOCTYPE issues [
+  <!ELEMENT issues (issue*)>
+  <!ELEMENT issue(topic, member, date, information)>
+  
+  <!-- issue id for data management -->
+  <!ATTLIST issue id CDATA #REQUIRED>
+  
+  <!-- ID of member who raised issue -->
+  <!ATTLIST member id CDATA #REQUIRED>
+  
+  <!-- date on which the issue was filed -->
+  <!ELEMENT date (day, month, year)>
+  <!ELEMENT day (#PCDATA)>
+  <!ELEMENT month (#PCDATA)>
+  <!ELEMENT year (#PCDATA)>
+  
+  <!-- category of issue -->
+  <!ELEMENT topic (#PCDATA)>
+  
+  <!-- issue status: resolved or unresolved -->
+  <!ELEMENT status (#PCDATA)>
+  
+  <!-- School steward who reported the issue -->
+  <!ELEMENT stewardTold (steward)>
+  
+  <!-- details about the issue -->
+  <!ELEMENT information (#PCDATA)>
+  
+]

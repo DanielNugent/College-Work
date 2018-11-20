@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schoolStewards SYSTEM "schoolStewards.dtd">
+<schoolStewards>
+	<steward idNumber='500424'>
+		<member.name>
+			<firstname>Miggeldy</firstname>
+			<lastname>O'Hannaran</lastname>
+		</member.name>
+		<contactInfo email='mohran@yahoomail.com' mobileNumber='0861234567'> </contactInfo>
+		<member.address isPrivate='y'>123 abc road, Ballyshannon, Sligo</member.address>
+		<member.nationality>Irish</member.nationality>
+    <member.dateOfBirth>
+        <day>16</day>
+        <month>08</month>
+        <year>1972</year>
+    </member.dateOfBirth>
+		<employedBySchool>St micks secondary</employedBySchool>
+        <member.dateOfMembership>
+            <day>16</day>
+            <month>08</month>
+            <year>1998</year>
+        </member.dateOfMembership>
+	</steward>
+</schoolStewards> 

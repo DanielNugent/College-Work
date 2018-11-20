@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE branches SYSTEM "branches.dtd">
+<branches>
+  <branch>
+    <location>Dublin South Central</location>
+    <member idNumber ='737562'>
+      <name>
+        <firstname>Ray</firstname>
+        <lastname>Smith</lastname>
+      </name>
+      <address isPrivate = 'y'>14 Branberry Road, Dublin</address>
+      <nationality>Irish</nationality>
+      <dateOfBirth>
+        <day>09</day>
+        <month>06</month>
+        <year>1984</year>
+      </dateOfBirth>
+      <email>johnsmith@gmail.com</email>
+      <registeredWithSchool>St. Kildas NS</registeredWithSchool>
+      <dateOfMembership>
+        <day>09</day>
+        <month>09</month>
+        <year>2008</year>
+      </dateOfMembership>
+    </member>
+    <member idNumber = '732442'>
+      <name>
+       <firstname>Joe</firstname>
+       <lastname>Bloggs</lastname>
+      </name>
+      <address>123 Seasame Street, Dublin</address>
+      <nationality>Moroccan</nationality>
+      <dateOfBirth>
+        <day>19</day>
+        <month>07</month>
+        <year>1967</year>
+      </dateOfBirth>
+      <email>joebloggs@gmail.com</email>
+      <registeredWithSchool>St. Gretas NS</registeredWithSchool>
+      <dateOfMembership>
+        <day>20</day>
+        <month>08</month>
+        <year>2002</year>
+      </dateOfMembership>
+    </member>
+    <branchSecretary>
+      <name>
+        <firstname>Mary</firstname>
+        <lastname>Higgard</lastname>
+      </name>
+      <email>maryhiggard@asti.ie</email>
+      <address isPrivate = 'y'>45 Bulltuggart Road, Louth</address>
+      <employedBy>Dublin South Central</employedBy>
+    </branchSecretary>
+    <branchOfficer>
+      <name>Alan McDonnell</name>
+      <email>alanmcdonnell@asti.ie</email>
+      <employedBy>Dublin South Central</employedBy>
+    </branchOfficer>
+  </branch>  
+  
+  <branch>
+    <location>Stillorgan</location>
+    <member idNumber='500423'>
+		<name>
+			<firstname>John</firstname>
+			<lastname>Doe</lastname>
+		</name>
+		<email>johnDoe22@gmail.com</email>
+		<address isPrivate='n'>10 cloverfield lane, nebraska, toronto</address>
+		<nationality>finnish</nationality>
+		<dateOfBirth>
+            <day>12</day>
+            <month>12</month>
+            <year>1998</year>
+        </dateOfBirth>
+		<registeredWithSchool>St.Billys secondary</registeredWithSchool>
+        <dateOfMembership>
+            <day>12</day>
+            <month>12</month>
+            <year>1998</year>
+        </dateOfMembership>
+	</member>
+  <branchSecretary>
+      <name>
+        <firstname>Simon</firstname>
+        <lastname>Delaney</lastname>
+      </name>
+      <email>delsimon@asti.ie</email>
+      <address isPrivate = 'y'>125 Church Road, Dublin</address>
+      <employedBy>Stillorgan</employedBy>
+  </branchSecretary>
+  </branch>
+</branches>
