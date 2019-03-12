@@ -16,8 +16,8 @@ architecture Behavioral of mux_2to1 is
 
 begin
     
-    Z<= I0 after 1 ns when S='0' else
-        I1 after 1 ns when S='1' else
-        "0000000000000000" after 1 ns;
+    Z<= I0 after 5 ns when S='0' else
+        I1 after 5 ns when S='1' else
+        "0000000000000000" after 5 ns;
 
 end Behavioral ; -- Behavioral
