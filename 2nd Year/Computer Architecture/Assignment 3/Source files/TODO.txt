@@ -1,0 +1,60 @@
+NEW COMPONENTS
+----------------------------------
+car --done
+decoder 3:8 -> decoder 4:9 --done
+extend --done
+mux 2:1 -> 1 bit --done
+mux 2:1 -> 8 bit --done
+mux 8:1 -> 1 bit --done
+mux 9:1 -- done
+zerofill --done
+PC --done
+Instruction Register (IR) --done
+microprogrammed control --done
+programme cpu --done
+
+
+control memory -- figure out wtf is happening with the codes
+test memory -- figure out wtf is happening with the codes
+
+
+
+TEST BENCHES
+-------------------------------
+car --done
+zerofill --done
+extend --done
+decoder 3:8 -> decoder 4:9 --done
+mux 2:1 -> 1 bit --done
+mux 2:1 -> 8 bit --done
+mux 8:1 -> 1 bit --done
+mux 9:1 --done
+PC --done
+Instruction Register (IR) --done
+control memory --done
+memory --done
+microprogrammed control --done
+programme cpu --done
+
+
+CHANGES TO PREVIOUS FILES
+---------------------------------
+decoder 3:9 -> decoder 4:9 - done
+shifter - done
+datapath - done
+register file - done
+
+SCREENSHOTS
+-----------------
+car --done
+decoder --done
+extend --done
+ir --done
+muxes --done
+pc --done
+zerofill --done
+
+microprogrammed control
+cpu
+control memory
+memory
