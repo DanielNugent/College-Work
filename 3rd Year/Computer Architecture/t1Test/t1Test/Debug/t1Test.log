@@ -1,0 +1,5 @@
+﻿t1Test.obj : error LNK2019: unresolved external symbol _min referenced in function _main
+t1Test.obj : error LNK2019: unresolved external symbol _p referenced in function _main
+t1Test.obj : error LNK2019: unresolved external symbol _gcd referenced in function _main
+t1Test.obj : error LNK2001: unresolved external symbol _g
+C:\Users\Rvail\Desktop\CA\t1Test\Debug\t1Test.exe : fatal error LNK1120: 4 unresolved externals
