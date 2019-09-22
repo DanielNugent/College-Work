@@ -1,9 +1,9 @@
 ** means regard the two asterisks and all following characters on that line 
-up to a \n as comment.
+up to a \n as comment. DONE
 
-anything between { and } is comment, potentially across multiple lines.
+anything between { and } is comment, potentially across multiple lines. DONE
 
-a { inside a comment is just part of the comment.
+a { inside a comment is just part of the comment. DONE
 
 a { not followed by } is regarded as a syntax error and your program
 should output the phrase "syntax error\n" in place of the
@@ -13,6 +13,6 @@ a } not preceded by a matching { is regarded as a syntax error and your
 program should output the phrase "syntax error\n" and exit at this place.
 
 between double-quote characters {} and ** are regarded as part of a
-string and dont indicate comments.
+string and dont indicate comments. DONE
 
-there's no facility to put a double-quote inside a string.
+there's no facility to put a double-quote inside a string. DONE
