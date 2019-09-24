@@ -6,9 +6,10 @@
 // 02/10/17	first version
 //
 
+#include "pch.h"         // pre-compiled headers
 #include <iostream>         // cout
 #include "conio.h"          // _getch
-#include <tchar.h>
+#include "tchar.h"
 #include "t1.h"             //
 #include "fib32.h"          //
 
@@ -41,7 +42,7 @@ int fib_IA32(int n) {
 	_asm {      mov eax, n          }   // mov n into eax
 	_asm {      cmp eax, 1          }   // if (n <= 0)
 	_asm {      jle L3              }   // return n
-	_asm {xor ecx, ecx        }   // fi = 0
+	_asm {      xor ecx, ecx        }   // fi = 0
 	_asm {      mov edx, 1          }   // fj = 1
 	_asm {L1:   cmp eax, 1          }   // while (n > 1)
 	_asm {      jle L2              }   //
@@ -58,7 +59,7 @@ int fib_IA32(int n) {
 //
 // check
 //
-void check(const char* s, int v, int expected) {
+void check(const char *s, int v, int expected) {
 	cout << s << " = " << v;
 	if (v == expected) {
 		cout << " OK";
