@@ -66,25 +66,25 @@ public		gcd			; gcd(int a, int b)
 gcd:
 ;	Function Entry
 	push ebp
-	mov esp, ebp
+	mov ebp, esp
 
 ;	Function Body
-	mov eax, [ebp + 12]	; eax = b
-	cmp eax, 0			; if (b == 0)
+	mov eax, [ebp + 8]	; eax = a
+	mov ecx, [ebp + 12]	; ecx = b
+	cmp ecx, 0			; if (b == 0)
 	je gcd_0			; 
 	jmp recursive
 
 recursive:
-	mov eax, [ebp + 8]	; eax = a
 	xor edx, edx		; EDX:EAX pair for numerator
-	mov ecx, [ebp + 12]	; ecx = b
-	div ecx				; quotient = eax ; remainder = edx
+	cdq
+	idiv ecx			; quotient = eax ; remainder = edx
 	push edx			; a%b
 	push ecx			; a
 	call gcd			; gcd(a, a % b)
+	add esp, 8
 
 gcd_0:
-	mov eax, [ebp + 8] ; eax = a
 	jmp gcdEnd
 
 ;	Funtion Exit
