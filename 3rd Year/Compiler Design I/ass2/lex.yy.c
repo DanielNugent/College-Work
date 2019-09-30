@@ -775,7 +775,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 17 "comments.l"
+#line 18 "comments.l"
 ECHO;
 	YY_BREAK
 #line 782 "lex.yy.c"
@@ -1783,7 +1783,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 17 "comments.l"
+#line 18 "comments.l"
 
 
 int main(int argc, char **argv)

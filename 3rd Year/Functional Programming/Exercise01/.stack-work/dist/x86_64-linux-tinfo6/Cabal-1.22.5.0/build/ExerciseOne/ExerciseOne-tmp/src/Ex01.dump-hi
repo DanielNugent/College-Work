@@ -1,0 +1,86 @@
+
+==================== FINAL INTERFACE ====================
+2019-09-30 16:55:29.725674 UTC
+
+interface main@main:Ex01 7103
+  interface hash: 4a1eadc5c0cd53497ad37fbd77137212
+  ABI hash: 7fc5c9484e7e6b50545065f755e8e9e7
+  export-list hash: 88a0bf033462707ce8665a0299bd6f8e
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 9c5992f3c5b2e0aca87d81fa7dd120f7
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Ex01.commonLen
+  Ex01.nth
+  Ex01.raise
+module dependencies:
+package dependencies: base-4.8.2.0* ghc-prim-0.4.0.0
+                      integer-gmp-1.0.0.0
+orphans: base-4.8.2.0:GHC.Base base-4.8.2.0:GHC.Float
+family instance modules: base-4.8.2.0:Control.Applicative
+                         base-4.8.2.0:Data.Either base-4.8.2.0:Data.Monoid
+                         base-4.8.2.0:Data.Type.Equality base-4.8.2.0:GHC.Generics
+import  -/  base-4.8.2.0:Data.Char c8f827952d4111ae2e47c0b105217cdb
+import  -/  base-4.8.2.0:GHC.Base 1db77db5dae73d8c424c85b09fbadb89
+import  -/  base-4.8.2.0:GHC.List 0c736920522bbd14b770342776012ab6
+import  -/  base-4.8.2.0:GHC.Num 9f42750c866f5832ca565146bd660c60
+import  -/  base-4.8.2.0:GHC.Unicode cdf84fc3abbaf34ba6b6645291cef991
+import  -/  base-4.8.2.0:Prelude 694dcaf039efe62df1c44834e2dbd2fb
+import  -/  ghc-prim-0.4.0.0:GHC.Classes e1f4ff80f7b5262008a595d29986fb18
+6e8ae32b3e6c1018e7b3acb16dd9b085
+  commonLen :: GHC.Classes.Eq a => [a] -> [a] -> GHC.Types.Int
+  {- Arity: 3, Strictness: <L,A><S,1*U><S,1*U>m,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ a $dEq :: GHC.Classes.Eq a ds :: [a] ds1 :: [a] ->
+                 case ds of wild {
+                   []
+                   -> case ds1 of wild1 {
+                        [] -> Ex01.commonLen2 : ipv ipv1 -> Ex01.commonLen1 }
+                   : ipv ipv1 -> Ex01.commonLen1 }) -}
+f843f0378e348e99ecb4173310a1c2c0
+  commonLen1 :: GHC.Types.Int
+  {- Strictness: b -}
+179d0eb0162dfaadaed8656681850a53
+  commonLen2 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0) -}
+df0b5da6a60312a8fa7e5c2c9ec4cd2d
+  nth :: GHC.Types.Int -> [a] -> a
+  {- Arity: 2, Strictness: <S,1*U(U)><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a n :: GHC.Types.Int xs :: [a] ->
+                 case n of wild { GHC.Types.I# x ->
+                 GHC.List.$w!! @ a xs (GHC.Prim.-# x 1) }) -}
+9cc3a42d11e448b74708fb95d5321c2f
+  raise :: GHC.Base.String -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ ds :: [GHC.Types.Char] ->
+                 case ds of wild {
+                   [] -> GHC.Types.[] @ GHC.Types.Char
+                   : ipv ipv1
+                   -> GHC.Base.build
+                        @ GHC.Types.Char
+                        (\ @ b1
+                           c :: GHC.Types.Char -> b1 -> b1[OneShot]
+                           n :: b1[OneShot] ->
+                         GHC.Base.foldr
+                           @ GHC.Types.Char
+                           @ b1
+                           (GHC.Base.mapFB
+                              @ GHC.Types.Char
+                              @ b1
+                              @ GHC.Types.Char
+                              c
+                              GHC.Unicode.toUpper)
+                           n
+                           wild) }) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

@@ -14,8 +14,8 @@ char no_comments[10000];
 \n                  { strcat(no_comments, yytext); }
 .                   { strcat(no_comments, yytext); }
 
-
 %%
+
 
 int main(int argc, char **argv)
 {

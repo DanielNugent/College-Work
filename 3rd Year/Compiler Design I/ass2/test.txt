@@ -1,4 +1,3 @@
-{ Wheres my buddy
 ** blah blah blah ignore me
 MMMM watcha sayyyyYyyyYYyYYYY
 { Im also a comment }
@@ -17,6 +16,4 @@ well of course you did
     pointy
     thing
 }
-"stringy boii"
 Mmmm, whatcha say (whatcha say, whatcha say)
-"what the **{} did you say to me?!?!?!?!?"
