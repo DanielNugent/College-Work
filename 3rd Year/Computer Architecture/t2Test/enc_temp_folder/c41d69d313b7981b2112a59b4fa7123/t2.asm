@@ -81,20 +81,20 @@ q:
     add rax, rdx					; sum += b
     add rax, r8						; sum += c
     add rax, r9						; sum += d
-    add rax, [rsp+96]				; sum += e (e is now at 96; 56+40)
+    add rax, [rsp+96]				; sum += e
 			
 	mov [rsp+64], rax				; preserve sum in shadow space 
     mov [rsp+48],rax				; sum
 	mov rax, [rsp+96]				; rax = e
 	mov [rsp+40],rax				; e
 	mov [rsp+32],r9					; d
+            
     mov r9, r8						; c
     mov r8, rdx						; b
     mov rdx, rcx					; a
     lea rcx, fqns					; fqns format string
 
-    call printf			
-	
+    call printf						;
 	mov rax, [rsp+64]				; sum from stack
 	add rsp, 56						; de-allocate shadow space
     ret	0							; 
