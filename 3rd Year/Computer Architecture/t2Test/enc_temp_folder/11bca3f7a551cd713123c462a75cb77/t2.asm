@@ -82,11 +82,11 @@ q:
 
 public		qns
 qns:
-	sub rsp, 32
+	;sub rsp, 32
 	lea rcx, qnss
 	call printf
 	mov rax, 0
-	add rsp, 32
+	;add rsp, 32
 	ret 0
 
 
