@@ -16,11 +16,11 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/home/rvail/Desktop/CSU34016-1920/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/bin"
-libdir     = "/home/rvail/Desktop/CSU34016-1920/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/lib/x86_64-linux-ghc-7.10.3/ex01-0.1.0.0-IxeruUelu6KJbIfS7prgY8"
-datadir    = "/home/rvail/Desktop/CSU34016-1920/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/share/x86_64-linux-ghc-7.10.3/ex01-0.1.0.0"
-libexecdir = "/home/rvail/Desktop/CSU34016-1920/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/libexec"
-sysconfdir = "/home/rvail/Desktop/CSU34016-1920/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/etc"
+bindir     = "/home/rvail/Desktop/College-Work/3rd Year/Functional Programming/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/bin"
+libdir     = "/home/rvail/Desktop/College-Work/3rd Year/Functional Programming/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/lib/x86_64-linux-ghc-7.10.3/ex01-0.1.0.0-IxeruUelu6KJbIfS7prgY8"
+datadir    = "/home/rvail/Desktop/College-Work/3rd Year/Functional Programming/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/share/x86_64-linux-ghc-7.10.3/ex01-0.1.0.0"
+libexecdir = "/home/rvail/Desktop/College-Work/3rd Year/Functional Programming/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/libexec"
+sysconfdir = "/home/rvail/Desktop/College-Work/3rd Year/Functional Programming/Exercise01/.stack-work/install/x86_64-linux-tinfo6/lts-6.19/7.10.3/etc"
 
 getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "ex01_bindir") (\_ -> return bindir)
