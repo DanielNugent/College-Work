@@ -3,7 +3,7 @@ numeral(-X) :- numeral(X).
 numeral(s(X)) :- numeral(X).
 numeral(p(X)) :- numeral(X).
 numeral(X+Y) :- numeral(X), numeral(Y).
-numeral(X+Y) :- numeral(X), numeral(Y).
+numeral(X-Y) :- numeral(X), numeral(Y).
 
 add(p(s(X)),Y,Z) :- add(X,Y,Z).
 add(s(p(X)),Y,Z) :- add(X,Y,Z).
@@ -14,8 +14,6 @@ add(p(X),s(Y),Z) :- add(X,Y,Z).
 add(s(X),p(Y),Z) :- add(X,Y,Z).
 add(s(X),Y,s(Z)) :- add(X,Y,Z).
 add(p(X),Y,p(Z)) :- add(X,Y,Z).
-
-
 
 add2(-A, B, C) :- minus(A, D), add2(D, B, C).
 add2(A, -B, C) :- minus(B, D), add2(D, A, C).
