@@ -1,0 +1,5 @@
+Pythons 'default_timer' from the timeit module automatically picks the best timing mechanism
+based on the detected OS.
+
+By running the ackermann algorithm and timing it 10 times and getting the average time, the results are 
+more accurate compared to just running and timing the algorithm once.
