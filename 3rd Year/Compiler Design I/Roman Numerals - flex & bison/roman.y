@@ -12,19 +12,23 @@ void yyerror(char *s);
 %%
 
 expr:
-    | expr value EOL { printf("%d\n", $2); }
+    | expr val EOL { printf("%d\n", $2); }
 ;
 
+val: term
+;
+
+
 term: I { $$ = $1; }
-    | II { $$ = $1}
-    | III { $$ = $1}
-    | IV { $$ = $1}
-    | V { $$ = $1}
-    | VI { $$ = $1}
-    | VII { $$ = $1}
-    | VIII { $$ = $1}
-    | IX { $$ = $1}
-    | X { $$ = $1}
+    | II { $$ = $1; }
+    | III { $$ = $1; }
+    | IV { $$ = $1; }
+    | V { $$ = $1; }
+    | VI { $$ = $1; }
+    | VII { $$ = $1; }
+    | VIII { $$ = $1; }
+    | IX { $$ = $1; }
+    | X { $$ = $1; }
 ;
 
 

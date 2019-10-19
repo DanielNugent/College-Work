@@ -1,3 +1,4 @@
+%option noyywrap
 %{
 #include "roman.tab.h"
 void yyerror(char *s);
