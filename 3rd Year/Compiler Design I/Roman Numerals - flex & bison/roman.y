@@ -16,15 +16,16 @@ expr:
 ;
 
 val: term
-    | val term { if ($1 + $2 > 1000 & $1 < 1000) { yyerror("syntax error\n"); }
-                      if ($1 != $2 || ($1 >= 1000 && $2 >= 1000))
-                      {
-                          $$ = $1 + $2;
-                      }
-                      else
-                      {
-                          yyerror("syntax error\n");
-                      }
+    | val term {
+                    if ($1 + $2 > 1000 & $1 < 1000) { yyerror("syntax error\n"); }
+                    if ($1 != $2 || ($1 >= 1000 && $2 >= 1000))
+                    {
+                        $$ = $1 + $2;
+                    }
+                    else
+                    {
+                        yyerror("syntax error\n");
+                    }
                 }
 
 ;
