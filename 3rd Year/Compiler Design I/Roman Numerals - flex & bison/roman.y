@@ -6,7 +6,7 @@ void yyerror(char *s);
 %}
 
 // declare tokens
-%token I II III IV V VI VII VIII IX X
+%token I II III IV V VI VII VIII IX X XX XXX XL L LX LXX LXXX XC C CC CCC CD D DC DCC DCCC CM M
 %token EOL
 
 %%
@@ -16,6 +16,17 @@ expr:
 ;
 
 val: term
+    | val term { if ($1 + $2 > 1000 & $1 < 1000) { yyerror("syntax error\n"); }
+                      if ($1 != $2 || ($1 >= 1000 && $2 >= 1000))
+                      {
+                          $$ = $1 + $2;
+                      }
+                      else
+                      {
+                          yyerror("syntax error\n");
+                      }
+                }
+
 ;
 
 
@@ -29,6 +40,24 @@ term: I { $$ = $1; }
     | VIII { $$ = $1; }
     | IX { $$ = $1; }
     | X { $$ = $1; }
+    | XX { $$ = $1; }
+    | XXX { $$ = $1; }
+    | XL { $$ = $1; }
+    | L { $$ = $1; }
+    | LX { $$ = $1; }
+    | LXX { $$ = $1; }
+    | LXXX { $$ = $1; }
+    | XC { $$ = $1; }
+    | C { $$ = $1; }
+    | CC { $$ = $1; }
+    | CCC { $$ = $1; }
+    | CD { $$ = $1; }
+    | D { $$ = $1; }
+    | DC { $$ = $1; }
+    | DCC { $$ = $1; }
+    | DCCC { $$ = $1; }
+    | CM { $$ = $1; }
+    | M { $$ = $1; }
 ;
 
 
