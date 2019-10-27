@@ -18,7 +18,7 @@ void yyerror(char *s);
 "X"             { yylval = 10; return X; }
 "XX"            { yylval = 20; return XX; }
 "XXX"           { yylval = 30; return XXX; }
-"Xl"            { yylval = 40; return XL; }
+"XL"            { yylval = 40; return XL; }
 "L"             { yylval = 50; return L; }
 "LX"            { yylval = 60; return LX; }
 "LXX"           { yylval = 70; return LXX; }
