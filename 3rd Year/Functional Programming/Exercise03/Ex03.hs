@@ -40,7 +40,6 @@ assoc2bst :: Ord a => Assoc a b -> BT a b
 assoc2bst [] = Leaf
 assoc2bst [(a, b)] = insBST a b Leaf
 assoc2bst ((a, b) : as) = insBST a b (assoc2bst as)
-
 -- Coding Part 3 (6 Marks)
 
 -- convert a binary search tree into an (ordered) association list
