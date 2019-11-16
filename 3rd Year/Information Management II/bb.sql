@@ -6,7 +6,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ---------------------
 DROP TABLE IF EXISTS `Characters`;
 CREATE TABLE `Characters`(
-    `character_id` int(4) NOT NULL PRIMARY KEY, -- Make this auto_increment instead
+    `character_id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Make this auto_increment instead
     `name` varchar(50) NOT NULL,
     `cast_ssn` int(4) NOT NULL,
     `alias` varchar(20),
@@ -21,7 +21,11 @@ CREATE TABLE `Characters`(
 
 BEGIN;
 
-INSERT INTO `Characters` VALUES (1111, 'Walter White', 9999, 'Heisenberg', 'DEAD');
+ALTER TABLE `Characters` AUTO_INCREMENT=2130;
+
+INSERT INTO `Characters` (`name`, `cast_ssn`, `alias`, `status`)
+VALUES 
+    ('Walter White', 3472, 'Heisenberg', 'DEAD');
 
 COMMIT;
 
@@ -30,7 +34,7 @@ COMMIT;
 -- ---------------------
 DROP TABLE IF EXISTS `Cast`;
 CREATE TABLE `Cast`(
-    `cast_ssn` int(4) NOT NULL PRIMARY KEY, -- Make this auto_increment instead
+    `cast_ssn` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Make this auto_increment instead
     `name` varchar(50) NOT NULL,
     `first_appearance` int NOT NULL,
 
@@ -39,7 +43,11 @@ CREATE TABLE `Cast`(
 
 BEGIN;
 
-INSERT INTO `Cast` VALUES (9999, 'Bryan Cranston', 11);
+ALTER TABLE `Cast` AUTO_INCREMENT=3472;
+
+INSERT INTO `Cast` (`name`, `first_appearance`)
+VALUES 
+    ('Bryan Cranston', 11);
 
 COMMIT;
 
@@ -66,7 +74,11 @@ CREATE TABLE `Episodes`(
 
 BEGIN;
 
-INSERT INTO `Episodes` VALUES (11, 1, 54, '2008-01-20', 3456);
+INSERT INTO `Episodes`
+VALUES 
+    (11, 1, 54, '2008-01-20', 4361);
+
+
 
 COMMIT;
 
@@ -75,7 +87,7 @@ COMMIT;
 -- ---------------------
 DROP TABLE IF EXISTS `Seasons`;
 CREATE TABLE `Seasons`(
-    `season_no` int(1) NOT NULL PRIMARY KEY, -- Make this auto_increment instead
+    `season_no` int(1) NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Make this auto_increment instead
     `start_date` date NOT NULL,
     `end_date` date NOT NULL,
     `episodes` int(2) NOT NULL
@@ -86,11 +98,14 @@ CREATE TABLE `Seasons`(
 -- ---------------------
 BEGIN;
 
-INSERT INTO `Seasons` VALUES (1, '2008-01-20', '2008-03-09', 7);
-INSERT INTO `Seasons` VALUES (2, '2009-03-08', '2009-05-31', 13);
-INSERT INTO `Seasons` VALUES (3, '2010-03-21', '2010-06-13', 13);
-INSERT INTO `Seasons` VALUES (4, '2011-07-17', '2011-10-09', 13);
-INSERT INTO `Seasons` VALUES (5, '2012-07-15', '2013-09-29', 16);
+
+INSERT INTO `Seasons` (`start_date`, `end_date`, `episodes`)
+VALUES 
+    ('2008-01-20', '2008-03-09', 7),
+    ('2009-03-08', '2009-05-31', 13),
+    ('2010-03-21', '2010-06-13', 13),
+    ('2011-07-17', '2011-10-09', 13),
+    ('2012-07-15', '2013-09-29', 16);
 
 COMMIT;
 
@@ -99,7 +114,7 @@ COMMIT;
 -- ---------------------
 DROP TABLE IF EXISTS `Writers`;
 CREATE TABLE `Writers`(
-    `writer_ssn` int(4) NOT NULL PRIMARY KEY,
+    `writer_ssn` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(20) NOT NULL -- trigger to check if writer is part of writers list
 );
 
@@ -108,6 +123,41 @@ CREATE TABLE `Writers`(
 -- ---------------------
 BEGIN;
 
-INSERT INTO `Writers` VALUES (3456, 'Vince Gilligan');
+ALTER TABLE `Writers` AUTO_INCREMENT=4361;
+
+INSERT INTO `Writers` (`name`) 
+VALUES 
+    ('Vince Gilligan');
 
 COMMIT;
+
+
+-- ---------------------
+-- Locations Table --
+-- ---------------------
+DROP TABLE IF EXISTS `Locations`;
+CREATE TABLE `Locations`(
+    `location_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `location` varchar(50) NOT NULL,
+    `type` varchar(20) NOT NULL
+);
+
+
+-- ---------------------
+-- Init 'Locations' --
+-- ---------------------
+BEGIN;
+
+ALTER TABLE `Locations` AUTO_INCREMENT=770421;
+
+COMMIT;
+
+DROP TABLE IF EXISTS `Groups`;
+CREATE TABLE `Groups`(
+    `group_name` varchar(20) NOT NULL PRIMARY KEY,
+    `operates_in` int(4) NOT NULL,
+    `rival` varchar(20),
+
+    CONSTRAINT FK_location_id FOREIGN KEY (`operates_in`) REFERENCES `Locations` (`location_id`)
+
+);
