@@ -10,8 +10,7 @@ CREATE TABLE `Characters`(
     `name` varchar(50) NOT NULL,
     `cast_ssn` int(4) NOT NULL,
     `alias` varchar(20),
-    `status` varchar(7) NOT NULL, -- Need to make trigger before insert to check if value in (dead, alive, unknown) 
-
+    `status` varchar(7) NOT NULL,
     CONSTRAINT FK_cast_ssn FOREIGN KEY (`cast_ssn`) REFERENCES `Cast` (`cast_ssn`)
 );
 
@@ -25,7 +24,15 @@ ALTER TABLE `Characters` AUTO_INCREMENT=2130;
 
 INSERT INTO `Characters` (`name`, `cast_ssn`, `alias`, `status`)
 VALUES 
-    ('Walter White', 3472, 'Heisenberg', 'DEAD');
+    ('Walter White', 3472, 'Heisenberg', 'DEAD'),
+    ('Jesse Pinkman', 3473, "Cap'n Cook", 'ALIVE'),
+    ('Skyler White', 3474, 'Sky', 'ALIVE'),
+    ('Hank Schrader', 3475, NULL, 'DEAD'),
+    ('Gustavo Fring', 3476, 'The Chicken Man', 'DEAD'),
+    ('Mike Ehrmantraut', 3477, NULL, 'DEAD'),
+    ('Walter White Jr.', 3478, 'Flynn', 'ALIVE'),
+    ('Saul Goodman', 3479, "Slippin' Jimmy", 'ALIVE'),
+    ('Marie Schrader', 3480, NULL, 'ALIVE');
 
 COMMIT;
 
@@ -36,7 +43,7 @@ DROP TABLE IF EXISTS `Cast`;
 CREATE TABLE `Cast`(
     `cast_ssn` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Make this auto_increment instead
     `name` varchar(50) NOT NULL,
-    `first_appearance` int NOT NULL,
+    `first_appearance` int(3) NOT NULL,
 
     CONSTRAINT FK_appearance_id FOREIGN KEY (`first_appearance`) REFERENCES `Episodes` (`episode_id`)
 );
@@ -47,7 +54,15 @@ ALTER TABLE `Cast` AUTO_INCREMENT=3472;
 
 INSERT INTO `Cast` (`name`, `first_appearance`)
 VALUES 
-    ('Bryan Cranston', 11);
+    ('Bryan Cranston', 011),
+    ('Aaron Paul', 011),
+    ('Anna Gunn', 011),
+    ('Dean Norris', 011),
+    ('Giancarlo Esposito', 112),
+    ('Jonathon Banks', 132),
+    ('RJ Mitte', 011),
+    ('Bob Odenkirk', 082),
+    ('Betsy Brandt', 011);
 
 COMMIT;
 
@@ -57,7 +72,7 @@ COMMIT;
 -- ---------------------
 DROP TABLE IF EXISTS `Episodes`;
 CREATE TABLE `Episodes`(
-    `episode_id` int(2) NOT NULL PRIMARY KEY,
+    `episode_id` int(3) NOT NULL PRIMARY KEY,
     `season` int(1) NOT NULL,
     `mins_long` int(2) NOT NULL,
     `air_date` DATE NOT NULL,
@@ -76,8 +91,10 @@ BEGIN;
 
 INSERT INTO `Episodes`
 VALUES 
-    (11, 1, 54, '2008-01-20', 4361);
-
+    (011, 1, 58, '2008-01-20', 4361),
+    (112, 2, 47, '2009-05-17', 4362),
+    (082, 2, 47, '2009-04-26', 4363),
+    (132, 2, 47, '2009-05-31', 4361);
 
 
 COMMIT;
@@ -127,7 +144,12 @@ ALTER TABLE `Writers` AUTO_INCREMENT=4361;
 
 INSERT INTO `Writers` (`name`) 
 VALUES 
-    ('Vince Gilligan');
+    ('Vince Gilligan'), -- 4361
+    ('George Mastras'), -- 4362
+    ('Peter Gould'), -- 4363
+    ('Moira Walley-Becket'), -- 4364
+    ('Thomas Schnauz'), -- 4365
+    ('Sam Catlin'); -- 4366
 
 COMMIT;
 
@@ -161,3 +183,20 @@ CREATE TABLE `Groups`(
     CONSTRAINT FK_location_id FOREIGN KEY (`operates_in`) REFERENCES `Locations` (`location_id`)
 
 );
+
+-- -------------------------------
+-- Trigger for Character INSERT --
+-- -------------------------------
+DELIMITER $$
+
+DROP TRIGGER IF EXISTS `before_character_insert`$$
+CREATE TRIGGER `before_character_insert`
+    BEFORE INSERT ON `Characters`
+    FOR EACH ROW 
+    BEGIN
+        IF NEW.status NOT IN ('DEAD', 'ALIVE') THEN
+            UPDATE `Error: status must be DEAD or ALIVE` set x=1;
+        END IF;
+    END$$
+
+DELIMITER ;
