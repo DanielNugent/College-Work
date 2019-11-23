@@ -6,7 +6,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ---------------------
 DROP TABLE IF EXISTS `Characters`;
 CREATE TABLE `Characters`(
-    `character_id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Make this auto_increment instead
+    `character_id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(50) NOT NULL,
     `cast_ssn` int(4) NOT NULL,
     `alias` varchar(20),
@@ -32,7 +32,12 @@ VALUES
     ('Mike Ehrmantraut', 3477, NULL, 'DEAD'),
     ('Walter White Jr.', 3478, 'Flynn', 'ALIVE'),
     ('Saul Goodman', 3479, "Slippin' Jimmy", 'ALIVE'),
-    ('Marie Schrader', 3480, NULL, 'ALIVE');
+    ('Marie Schrader', 3480, NULL, 'ALIVE'),
+    ('Todd Alquist', 3481, NULL, 'ALIVE'),
+    ('Lydia Rodart-Quayle', 3482, NULL, 'DEAD'),
+    ('Tuco Salamanca', 3483, "Tuco", 'DEAD'),
+    ('Kuby', 3484, NULL, 'ALIVE'),
+    ('Jane Margolis', 3485, NULL, 'ALIVE');
 
 COMMIT;
 
@@ -41,7 +46,7 @@ COMMIT;
 -- ---------------------
 DROP TABLE IF EXISTS `Cast`;
 CREATE TABLE `Cast`(
-    `cast_ssn` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Make this auto_increment instead
+    `cast_ssn` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(50) NOT NULL,
     `first_appearance` int(3) NOT NULL,
 
@@ -62,9 +67,15 @@ VALUES
     ('Jonathon Banks', 132),
     ('RJ Mitte', 011),
     ('Bob Odenkirk', 082),
-    ('Betsy Brandt', 011);
+    ('Betsy Brandt', 011),
+    ('Jesse Plemons', 035),
+    ('Laura Fraser', 025),
+    ('Raymond Cruz', 061),
+    ('Bill Burr', 034),
+    ('Krysten Ritter', 052);
 
 COMMIT;
+
 
 
 -- ---------------------
@@ -94,17 +105,21 @@ VALUES
     (011, 1, 58, '2008-01-20', 4361),
     (112, 2, 47, '2009-05-17', 4362),
     (082, 2, 47, '2009-04-26', 4363),
-    (132, 2, 47, '2009-05-31', 4361);
+    (132, 2, 47, '2009-05-31', 4361),
+    (035, 5, 48, '2012-07-29', 4363),
+    (025, 5, 49, '2012-07-22', 4361),
+    (061, 1, 46, '2008-03-02', 4362),
+    (034, 4, 47, '2011-07-31', 4366),
+    (052, 2, 49, '2009-04-05', 4364);
 
 
 COMMIT;
-
 -- ---------------------
 -- Seasons Table --
 -- ---------------------
 DROP TABLE IF EXISTS `Seasons`;
 CREATE TABLE `Seasons`(
-    `season_no` int(1) NOT NULL PRIMARY KEY AUTO_INCREMENT, -- Make this auto_increment instead
+    `season_no` int(1) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
     `start_date` date NOT NULL,
     `end_date` date NOT NULL,
     `episodes` int(2) NOT NULL
@@ -132,7 +147,7 @@ COMMIT;
 DROP TABLE IF EXISTS `Writers`;
 CREATE TABLE `Writers`(
     `writer_ssn` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` varchar(20) NOT NULL -- trigger to check if writer is part of writers list
+    `name` varchar(20) NOT NULL
 );
 
 -- ---------------------
@@ -160,8 +175,7 @@ COMMIT;
 DROP TABLE IF EXISTS `Locations`;
 CREATE TABLE `Locations`(
     `location_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `location` varchar(50) NOT NULL,
-    `type` varchar(20) NOT NULL
+    `location_name` varchar(50) NOT NULL
 );
 
 
@@ -172,17 +186,42 @@ BEGIN;
 
 ALTER TABLE `Locations` AUTO_INCREMENT=770421;
 
+INSERT INTO `Locations` (`location_name`)
+VALUES 
+    ('Albuquerque'),
+    ('Germany'),
+    ('Mexico'),
+    ('West Ho Motel'),
+    ('Superlab'),
+    ('Best Quality Vacuum'),
+    ('White Residence'),
+    ("Jesse's House"),
+    ("Saul Goodman's Office");
+
 COMMIT;
 
 DROP TABLE IF EXISTS `Groups`;
 CREATE TABLE `Groups`(
-    `group_name` varchar(20) NOT NULL PRIMARY KEY,
-    `operates_in` int(4) NOT NULL,
-    `rival` varchar(20),
+    `group_name` varchar(30) NOT NULL PRIMARY KEY,
+    `type` varchar(30) NOT NULL,
+    `operates_in` int(6) NOT NULL,
 
     CONSTRAINT FK_location_id FOREIGN KEY (`operates_in`) REFERENCES `Locations` (`location_id`)
-
 );
+
+BEGIN;
+
+INSERT INTO `Groups` 
+VALUES 
+    ("Walt's Drug Empire", 'Drug Empire', 770421),
+    ("Gus' Drug Empire", 'Drug Empire', 770421),
+    ("Vamonos Pest", 'Pest Control Company', 770421),
+    ("Magrigal Electromotive GmbH", 'Shipping Conglomerate', 770422),
+    ("Jack's White Supremacist Gang", 'White power gang', 770421),
+    ("Espinosa Gang", 'Drug Distributor', 770423),
+    ("Juarez Cartel", 'Drug Cartel', 770424);
+
+COMMIT;
 
 -- -------------------------------
 -- Trigger for Character INSERT --
@@ -200,3 +239,54 @@ CREATE TRIGGER `before_character_insert`
     END$$
 
 DELIMITER ;
+
+-- -------------------------------
+-- Trigger for Writer INSERT --
+-- -------------------------------
+DELIMITER $$
+
+DROP TRIGGER IF EXISTS `before_writer_insert`$$
+CREATE TRIGGER `before_writer_insert`
+    BEFORE INSERT ON `Writers`
+    FOR EACH ROW 
+    BEGIN
+        IF NEW.name NOT IN ('Vince Gilligan', 'George Mastras', 'Peter Gould', 'Moira Walley-Becket', 'Thomas Schnauz', 'Sam Catlin') THEN
+            UPDATE `Error: Not a Breaking Bad Writer!` set x=1;
+        END IF;
+    END$$
+
+DELIMITER ;
+
+-- -------------------------------
+-- Trigger for Cast DELETE --
+-- -------------------------------
+DELIMITER $$
+
+DROP TRIGGER IF EXISTS `before_cast_delete`$$
+CREATE TRIGGER `before_cast_delete`     
+    BEFORE DELETE ON `Cast`     
+    FOR EACH ROW     
+    BEGIN
+        DELETE FROM `Characters` where `cast_ssn` = OLD.cast_ssn;
+    END$$
+
+DELIMITER ;
+
+-- ----------------------------
+-- Who_Played_What_When View --
+-- ----------------------------
+DROP VIEW IF EXISTS `Who_Played_What_When`;
+CREATE VIEW `Who_Played_What_When`(`Cast Member`, `Character Portrayed`, `First Appearance`)
+AS SELECT `Cast`.name, `Characters`.name, `Episodes`.episode_id
+FROM `Cast`, `Characters`, `Episodes`
+WHERE `Cast`.cast_ssn=`Characters`.cast_ssn
+AND `Cast`.first_appearance=`Episodes`.episode_id;
+
+-- ----------------------------
+-- Group_Operations View --
+-- ----------------------------
+DROP VIEW IF EXISTS `Group_Operations`;
+CREATE VIEW `Group_Operations`(`Group`, `Operates In`)
+AS SELECT `Groups`.group_name, `Locations`.location_name
+FROM `Groups`, `Locations`
+WHERE `Groups`.operates_in=`Locations`.location_id;
