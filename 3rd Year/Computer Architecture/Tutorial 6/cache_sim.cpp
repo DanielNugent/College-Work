@@ -16,8 +16,8 @@ int misses = 0;
 
 class Cache {
     int L = 16;
-    int K;
-    int N;
+    int K = 0;
+    int N = 0;
 
     list<int> tag[8]; 
     unordered_map<int, unordered_map<int, list<int>::iterator>> cacheMap; 
@@ -81,6 +81,7 @@ int main(){
     int N = cache.getN();
     int size = *(&addrs + 1) - addrs; 
     std::cout << "Cache Simulation with L= 16, N= " << cache.getN() << ", K= " << cache.getK() << "\nResult: \n";
+    
     for(int i = 0; i<size; i++){
         init = findSetNumber(addrs[i],N);
         std::cout << "0x" << std::hex << addrs[i];
