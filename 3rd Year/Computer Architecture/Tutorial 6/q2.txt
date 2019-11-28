@@ -1,0 +1,17 @@
+Q1/Q2
+
+    (i) 128 byte 1-way cache with 16 bytes per line (direct mapped)
+        Hits: 9
+        Misses: 23
+
+    (ii) 128 byte 2-way set associative cache with 16 bytes per line
+        Hits: 13
+        Misses: 19
+    
+    (iii) 128 byte 4-way set associative cache with 16 bytes per line
+        Hits: 15
+        Misses: 17
+    
+    (iv) 128 byte 8-way associative cache with 16 bytes per line (fully associative)
+        Hits: 16
+        Misses: 16
