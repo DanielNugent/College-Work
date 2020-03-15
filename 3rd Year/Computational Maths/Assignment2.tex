@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath}
+\title{Computational Maths: Assignment 2}
+\author{Rvail Naveed: 17321983}
+
+\begin{document}
+    \maketitle
+    \newpage
+
+    \section{Question 4.23}
+        My answer: \textbf{(ii)}
+        L = 
+        $\begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            -2 & 1 & 0 & 0 \\
+            0.5 & 1.5 & 1 & 0 \\ 
+            -2 & 3 & -0.5 & 1
+        \end{bmatrix}$
+        U = 
+        $\begin{bmatrix}
+            4 & -1 & 3 & 2 \\ 
+            0 & -2 & 3 & 0.5 \\ 
+            0 & 0 & 4 & 2 \\ 
+            0 & 0 & 0 & 3
+        \end{bmatrix}$
+        
+        \subsection{Matlab code}
+        \begin{lstlisting}[language=Matlab]
+        function [L, U] = LUdecompgauss(A)
+        % Get m * n dimensions
+        [m, n] = size(A);
+
+        if (m~=n)
+            disp("Matrix is not square!");
+        end
+        % Set up for LU decomposition
+        L = zeros(m);
+        for i = 1:m
+            L(i, i) = 1;
+        end
+        U = A;
+
+        d = 1;
+        for i = 1:m
+            for j = 1:n
+                if i == j
+                    tmp = d
+                    while tmp < m
+                        tmp = tmp + 1;
+                        const = U(tmp, j) / U(i, j);
+                        for x = 1:m
+                            U(tmp, x) = U(tmp, x) - (const * U(i, x));
+                        end
+                        L(tmp, j) = const
+                    end
+                end
+            end
+            d = d + 1
+        end
+
+        disp(L);
+        disp(U);
+        \end{lstlisting}
+    
+    \section{Question 5.17}
+
+    \section{Question 6.3}
+
+\end{document}
