@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage{listings}
 \usepackage{amsmath}
+\usepackage{siunitx}
+
 \title{Computational Maths: Assignment 2}
 \author{Rvail Naveed: 17321983}
 
@@ -83,5 +85,49 @@
         \end{lstlisting}
 
     \section{Question 6.3}
+        Linear form of $ p = be^{mx} $ is: 
+
+        \begin{equation}
+        ln(p)= mx + ln(b)
+        \end{equation}
+
+        \begin{equation}
+            S_x = \sum\limits_{i=1}^7 = 1900 + 1950 + 1970 + 1980 + 1990 + 2000 + 2010 \break
+                = \textbf{13,800}
+        \end{equation}
+
+        \begin{equation}
+            S_y = \sum\limits_{i=1}^7 = 400 + 557 + 825 + 981 + 1135 + 1266 + 1370
+                = \textbf{6,534}
+        \end{equation}
+
+        \begin{equation}
+            S_{xx} = \sum\limits_{i=1}^7 = 1900^2 + 1950^2  + 1970^2  + 1980^2  + 1990^2  + 2000^2  + 2010^2 
+                = \textbf{27,214,000}
+        \end{equation}
+
+        \begin{equation}
+            \begin{aligned}
+            S_{xy} = \sum\limits_{i=1}^7 = 1900*400 + 1950*557  + 1970*825  + 1980*981 \\  + 1990*1135  + 2000*1266  + 2010*1370 \\
+                = \textbf{12,958,130}
+            \end{aligned}
+        \end{equation}
+
+        \begin{equation}
+            a_0 = \frac{S_{xx}S_y - S_{xy}S_x}{nS_{xx} - S^2_x} = \frac{(27,214,000*6534) - (12,958,130-13,800)}{(7*27,214,000)-13,800^2}
+        \end{equation}
+
+        \begin{equation}
+            a_0 = -17343.41379
+        \end{equation}  
+
+        \begin{equation}
+            a_1 = \frac{S_{xy}S_y - S_{xy}S_x}{nS_{xx} - S^2_x} = \frac{(7*12,958,130) - (13,800*6534)}{(7*27,214,000)-13,800^2}
+        \end{equation}
+
+        \begin{equation}
+            a_1 = \num{3.137343e-3}
+        \end{equation}  
+        
 
 \end{document}
