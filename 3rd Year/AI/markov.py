@@ -77,11 +77,7 @@ class MarkovDecisionProcess:
         for i in range(n+1):
             p = self.q0(state, 'exercise', i)
             q = self.q0(state, 'relax', i)
-            # format
             print("n=" + str(i) + " exercise: " + str(p) + " relax: " + str(q))
-            
-            #print("n=%d exercise %.15f relax %.15f" % (i, p, q))
-            #print 'n=%d %s: %.15f; %s: %.15f' %(i, 'exercise', p, 'relax', q)
 
     def vn(self, state, n):
         # max(qn(s, exercise), qn(s, relax))
@@ -90,15 +86,16 @@ class MarkovDecisionProcess:
         v = max(qn_s_exercise, qn_s_relax)  
         return v
 
-n = int(input("Enter no. of iternations, N: "))
+if __name__ == "__main__":
+    n = int(input("Enter no. of iternations, N: "))
 
-G = float(input("Enter gamma, G (0-1): "))
-while G > 1 or G < 0:
     G = float(input("Enter gamma, G (0-1): "))
+    while G > 1 or G < 0:
+        G = float(input("Enter gamma, G (0-1): "))
 
-start_state = input("Enter start state(fit, unfit, dead): ")
-while start_state not in STATES:
     start_state = input("Enter start state(fit, unfit, dead): ")
+    while start_state not in STATES:
+        start_state = input("Enter start state(fit, unfit, dead): ")
 
-markov = MarkovDecisionProcess(G)
-markov.qn(start_state, n)
+    markov = MarkovDecisionProcess(G)
+    markov.qn(start_state, n)
