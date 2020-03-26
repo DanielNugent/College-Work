@@ -50,10 +50,6 @@ if __name__ == "__main__":
     print("Prob(X_0 = 1) for user0: " + str(x0_1))
     ## Q1(b) ##
 
-    ## Q1(c) ##
-
-    ## Q1(c) ##
-
     ## Q1(d) ##
     user_times = [x[1] for x in lst]
     user_gt10 = list(filter(lambda x: x > 10, user_times))
@@ -69,7 +65,4 @@ if __name__ == "__main__":
     user_gt10 = list(filter(lambda x: x > 10, user_times))
     x0_1 = len(user_gt10) / len(user_times)
     print("Prob(X_0 = 1) for user3: " + str(x0_1))
-    
-       
-
     ## Q1(d) ##
