@@ -20,6 +20,21 @@ def frequencies(values):
             frequencies[v] = 1
     return frequencies
 
+def q1d(lst):
+    xi_arr = []
+    for i in range(1, 4):
+        user_times = [x[i] for x in lst]
+        user_gt10 = list(filter(lambda x: x > 10, user_times))
+        x = len(user_gt10) / len(user_times)
+        xi_arr.append(x)
+        print("Prob(X_"+str(i) + " = 1) for user"+str(i) + ": " + str(x))
+
+    return xi_arr
+
+def Zn(xi_arr):
+    zn = (xi_arr[0] * USER_PROBS["user0"]) + (xi_arr[1]* USER_PROBS["user1"]) + (xi_arr[2] * USER_PROBS["user2"]) + (xi_arr[3] * USER_PROBS["user3"])
+    print("Zn = " + str(zn))
+
 def probabilities(sample, freqs):
     probs = []
     for k,v in freqs.items():
@@ -50,19 +65,11 @@ if __name__ == "__main__":
     print("Prob(X_0 = 1) for user0: " + str(x0_1))
     ## Q1(b) ##
 
-    ## Q1(d) ##
-    user_times = [x[1] for x in lst]
-    user_gt10 = list(filter(lambda x: x > 10, user_times))
-    x0_1 = len(user_gt10) / len(user_times)
-    print("Prob(X_0 = 1) for user1: " + str(x0_1))
+    ## Q2 ##
+    xi_arr = q1d(lst)
+    ## Q2 ##
 
-    user_times = [x[2] for x in lst]
-    user_gt10 = list(filter(lambda x: x > 10, user_times))
-    x0_1 = len(user_gt10) / len(user_times)
-    print("Prob(X_0 = 1) for user2: " + str(x0_1))
-
-    user_times = [x[3] for x in lst]
-    user_gt10 = list(filter(lambda x: x > 10, user_times))
-    x0_1 = len(user_gt10) / len(user_times)
-    print("Prob(X_0 = 1) for user3: " + str(x0_1))
-    ## Q1(d) ##
+    ## Q3 ##
+    xi_arr.insert(0, x0_1)
+    Zn(xi_arr)
+    ## Q3 ##
