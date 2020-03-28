@@ -35,13 +35,12 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 \makeatletter
 \renewcommand{\maketitle}{
 \begin{center}
-\vspace{2ex}
-{\huge \textsc{\@title}}
+\vspace{1ex}
+{\small \textsc{\@title}}
 \vspace{1ex}
 \\
-\linia\\
-\@author \hfill \@date
-\vspace{4ex}
+% \linia\\
+% \vspace{1ex}
 \end{center}
 }
 \makeatother
@@ -53,19 +52,20 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 
 % custom footers and headers
 \usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{}
-\chead{}
-\rhead{}
-\lfoot{}
-\cfoot{}
-\rfoot{Page \thepage}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+% \pagestyle{fancy}
+% \lhead{}
+% \chead{}
+% \rhead{}
+% \lfoot{}
+% \cfoot{}
+% \rfoot{Page \thepage}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
 %
 \usepackage{amsmath}
 \usepackage{siunitx}
 \usepackage{graphicx}
+\usepackage{multicol}
 % code listing settings
 \usepackage{listings}
 \lstset{
@@ -97,39 +97,57 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 
 \begin{document}
 
-\title{Stats Mid-Term Assignment}
-
-\author{Rvail Naveed: 17321983}
+\title{Stats Mid-Term Assignment | Rvail Naveed: 17321983}
 
 \date{26/03/2020}
 
 \maketitle
 
-\section*{Q1(a)}
-    \begin{figure}[h]
-        \centering
+\begin{minipage}[t]{0.48\linewidth}
+    \section*{Q1(a)}
         \includegraphics[scale=0.3]{pmf.png}
-       % \caption{Code included in appendix}
-    \end{figure}
-
-\section*{Q1(b)} 
-    $Prob(X_0 = 1) = 0.582$ 
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+    \section*{Q1(b)} 
+        Mapping the values for $X_0$ to all the values for user0 we get
+        582 values where $X_0=1$. Since $Prob(X_0 = 1) = E[X_0]$. We can use the formula for empirical mean:
+        $$ \frac{1}{N}\sum_{k=1}^NX_k = \frac{582}{1000}$$
+        $Prob(X_0 = 1) = 0.582$
+    \newline
+    \section*{Q1(d)} 
+        Code in appendix
+\end{minipage}
 
 \section*{Q1(c)} 
     Chebyshev: 
+    \begin{itemize}
+        \item Gives full distribution of $X_0$
+        \item Only requires mean and variance to full describe distribution
+        \item Con: Approximation when N is finite, hard to determine accuracy
+    \end{itemize}
     $$ \mu = 0.582,  \sigma = \sqrt{\mu(1-\mu)} = 0.493, N=1000 $$
     $$ \mu - \frac{\sigma}{\sqrt{0.05N}} \leq X_0 \leq \mu + \frac{\sigma}{\sqrt{0.05N}} = 0.582 - \frac{0.493}{\sqrt{0.05(1000)}} \leq X_0 \leq 0.582 + \frac{0.493}{\sqrt{0.05(1000)}}$$ 
-    $$ 0.512 \leq X_0 \leq 0.651 $$ \newline
+    $$ 0.512 \leq X_0 \leq 0.651 $$ 
 
     CLT:
+    \begin{itemize}
+        \item Provides an actual bound and not an approximation
+        \item Works for all N
+        \item Con: It's loose in general
+    \end{itemize}
     $$ \frac{\frac{(X_1+X_2+...+X_n)}{n} - \mu}{\frac{\sigma}{\sqrt{n}}}  = $$
 
     Bootstrapping:
+    \begin{itemize}
+        \item Gives full distribution without assuming normality
+        \item Con: Approximation when N is finite, hard to determine accuracy
+        \item Con: Requires the availability of all N measurements
+    \end{itemize}
     $$ $$
 \section*{Q2}
     \textbf{user1}: 0.416 | \textbf{user2}: 0.399 | \textbf{user3}: 0.334
 
-\newpage
 
 \section*{Q3}
     Using marginalisation and summing all the probabilites to get $Z_n$:
@@ -137,4 +155,16 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
     $$ 0.582(0.09742...) + 0.416(0.40468...) + 0.399(0.23529...) + 0.334(0.26260...) $$
     $ Z_n = 0.4066392298682297 $
 
+\section*{Q4}
+    $$ P(U_n=0|Z_n > 10ms) = P(E|F) = \frac{P(F|E)P(E)}{P(F)} $$
+    \begin{itemize}
+        \item $ P(F|E) = 0.582 $ (from Q1)
+        \item $ P(E) = 0.09742483650256 $ (from top line of dataset)
+        \item $ P(E^c) = 1-P(E) = 1-0.09742483650256 = 0.902575163 $
+        \item $ P(F|E^c) = 1-P(F|E) = 1-0.582 = 0.418 $
+        \item $ P(F) = P(F|E)*P(E) + P(F|E^c)*P(E^c) $
+    \end{itemize}
+
+    $$ P(U_n=0|Z_n > 10ms) = \frac{0.582 * 0.09742483650256}{(0.582 * 0.09742483650256)+(0.418*0.902575163)} $$
+    $ P(U_n=0|Z_n > 10ms) = 0.1306547741392685 $
 \end{document}
