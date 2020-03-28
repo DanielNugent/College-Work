@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from random import randint
+from random import randrange
 
 USER_PROBS = {
     'user0': 0.09742483650256,
@@ -23,28 +23,28 @@ def q4():
     ans = (USER_PROBS["user0"]*0.582) / ((USER_PROBS["user0"]*0.582) + (0.418*0.902575163))
     print("Q4: " + str(ans))
 
+# For Q3
 def Zn(xi_arr):
     zn = (xi_arr[0] * USER_PROBS["user0"]) + (xi_arr[1]* USER_PROBS["user1"]) + (xi_arr[2] * USER_PROBS["user2"]) + (xi_arr[3] * USER_PROBS["user3"])
     print("Zn = " + str(zn))
 
+# For Q5
 def stochastic_sim():
-    # Generate 1000 random requests for each user
-    # Calcuate P(X_i) = 1 for all of them
-    # get Z_n using those and user probs
     user0_times = []
     user1_times = []
     user2_times = []
     user3_times = []
     user_requests = []
     for x in range(0, 100):
-        user0_times.append(randint(0, 150))
-        user1_times.append(randint(0, 150))
-        user2_times.append(randint(0, 150))
-        user3_times.append(randint(0, 150))
+        user0_times.append(randrange(0, 100))
+        user1_times.append(randrange(0, 100))
+        user2_times.append(randrange(0, 100))
+        user3_times.append(randrange(0, 100))
     user_requests.append(user0_times)
     user_requests.append(user1_times)
     user_requests.append(user2_times) 
     user_requests.append(user3_times)
+    print(user1_times)
     xi_arr = []
     for i in range(0, 4):
         user_gt10 = list(filter(lambda x: x > 10, user_requests[i]))
@@ -53,7 +53,6 @@ def stochastic_sim():
     print("Stochastic sim")
     Zn(xi_arr)
     
-
 def frequencies(values):
     frequencies = {}
     for v in values:
@@ -83,7 +82,7 @@ if __name__ == "__main__":
     x_axis = list(set(user_times))
     plt.bar(x_axis,  probs, width=1)
     plt.title("PMF of user0 Times")
-   # plt.show()
+    plt.show()
     ## Q1(a) ##
 
     ## Q1(b) ##
@@ -105,4 +104,6 @@ if __name__ == "__main__":
     q4()
     ## Q4 ##
 
+    ## Q5 ##
     stochastic_sim()
+    ## Q5 ##
