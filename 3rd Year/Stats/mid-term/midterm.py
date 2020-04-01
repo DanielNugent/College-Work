@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from random import randrange
+from random import randrange, choices
 
 USER_PROBS = {
     'user0': 0.09742483650256,
@@ -8,20 +8,24 @@ USER_PROBS = {
     'user3': 0.26260143635472
 }
 
-def q1d(lst):
-    xi_arr = []
-    for i in range(1, 4):
-        user_times = [x[i] for x in lst]
-        user_gt10 = list(filter(lambda x: x > 10, user_times))
-        x = len(user_gt10) / len(user_times)
-        xi_arr.append(x)
-        print("Prob(X_"+str(i) + " = 1) for user"+str(i) + ": " + str(x))
+def prob_X(lst, i, xi_arr):
+    user_times = [x[i] for x in lst]
+    user_gt10 = list(filter(lambda x: x > 10, user_times))
+    x = len(user_gt10) / len(user_times)
+    xi_arr.append(x)
+    print("Prob(X_"+str(i) + " = 1) for user"+str(i) + ": " + str(x))
 
-    return xi_arr
-
-def q4():
-    ans = (USER_PROBS["user0"]*0.582) / ((USER_PROBS["user0"]*0.582) + (0.418*0.902575163))
-    print("Q4: " + str(ans))
+# For part of q1(c)
+def bootstrapping(user_times):
+    x_arr = []
+    for i in range(0, 1000):
+        sample = choices(user_times, k=100)
+        user_gt10 = list(filter(lambda x: x > 10, sample))
+        x = len(user_gt10) / len(sample)
+        x_arr.append(x)
+    plt.hist(x_arr)
+    plt.title("Bootstrapping")
+    plt.show()
 
 # For Q3
 def Zn(xi_arr):
@@ -44,7 +48,6 @@ def stochastic_sim():
     user_requests.append(user1_times)
     user_requests.append(user2_times) 
     user_requests.append(user3_times)
-    print(user1_times)
     xi_arr = []
     for i in range(0, 4):
         user_gt10 = list(filter(lambda x: x > 10, user_requests[i]))
@@ -70,6 +73,7 @@ def probabilities(sample, freqs):
 
 if __name__ == "__main__":
     lst = []
+    xi_arr = []
     with open("dataset.txt") as f:
         next(f)
         for line in f:
@@ -86,22 +90,26 @@ if __name__ == "__main__":
     ## Q1(a) ##
 
     ## Q1(b) ##
-    user_gt10 = list(filter(lambda x: x > 10, user_times))
-    x0_1 = len(user_gt10) / len(user_times)
-    print("Prob(X_0 = 1) for user0: " + str(x0_1))
+    prob_X(lst, 0, xi_arr)
     ## Q1(b) ##
 
+    ## Q1(c) ##
+    bootstrapping(user_times)
+    ## Q1(c) ##
+
     ## Q2 ##
-    xi_arr = q1d(lst)
+    prob_X(lst, 1, xi_arr)
+    prob_X(lst, 2, xi_arr)
+    prob_X(lst, 3, xi_arr)
     ## Q2 ##
-    xi_arr.insert(0, x0_1)
 
     ## Q3 ##
     Zn(xi_arr)
     ## Q3 ##
 
     ## Q4 ##
-    q4()
+    bayes = (USER_PROBS["user0"]*0.582) / ((USER_PROBS["user0"]*0.582) + (0.418*0.902575163))
+    print("Q4: " + str(bayes))
     ## Q4 ##
 
     ## Q5 ##
